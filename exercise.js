@@ -13,8 +13,26 @@
 const cypher = (encoded) => {
     
     /* Only make changes below this comment */
-    
-   return encoded;
+    let key = 13;
+    let decoded = '';
+
+    for (let i = 0; i < encoded.length; i++) {
+        const charCode = encoded.charCodeAt(i);
+
+        if ((charCode < 65 || charCode > 122) || (charCode > 90 && charCode < 97)) {
+            decoded += encoded[i];
+        } else {
+            let newCharCode = charCode + Math.ceil(key % 26);
+            if (charCode >= 97 && newCharCode > 122) {
+                newCharCode = newCharCode - 122 + 96;
+            }
+            if (charCode <= 90 && newCharCode > 90) {
+                newCharCode = newCharCode - 90 + 64;
+            }
+            decoded += String.fromCharCode(newCharCode);
+        }
+    }
+    return decoded;
     /* Only make changes above this comment */
 }
 
