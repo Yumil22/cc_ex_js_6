@@ -13,8 +13,24 @@
 const cypher = (encoded) => {
     
     /* Only make changes below this comment */
+    const alfabeto = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+    const array_letters = encoded.split('');
+
+    let new_encoded = []
+
+    for (let i = 0; i < array_letters.length; i ++ ){
+        let j = alfabeto.indexOf(array_letters[i]);
+        if (j !== -1) {
+            new_encoded.push(alfabeto[(j + 13) % 26]);
+        } else {
+            new_encoded.push(array_letters[i]);
+        }  
+    }
     
-   return encoded;
+    answer = new_encoded.join('');
+
+   return answer;
     /* Only make changes above this comment */
 }
 
