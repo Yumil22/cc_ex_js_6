@@ -13,7 +13,21 @@
 const cypher = (encoded) => {
     
     /* Only make changes below this comment */
-    
+    let resultado = '';
+
+    for (let caracter of encoded) {
+        if (caracter >= 'A' && caracter <= 'Z') {
+            resultado += String.fromCharCode(((caracter.charCodeAt(0) - 65 + 13) % 26) + 65);
+        } 
+        else if (caracter >= 'a' && caracter <= 'z') {
+            resultado += String.fromCharCode(((caracter.charCodeAt(0) - 97 + 13) % 26) + 97);
+        } 
+        else {
+            resultado += caracter;
+        }
+    }
+
+   return resultado;
    return encoded;
     /* Only make changes above this comment */
 }
