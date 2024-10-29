@@ -13,8 +13,25 @@
 const cypher = (encoded) => {
     
     /* Only make changes below this comment */
+    let decoded = "";
+    const shift = 13;
+
+    for (let i = 0; i < encoded.length; i++){
+
+        let ascii = encoded[i].charCodeAt();
+
+        if (ascii >= 65 && ascii <= 90) {
+
+            ascii = ((ascii - 65 + shift) % 26) + 65;
+
+        } else if (ascii >= 97 && ascii <= 122) {
+            ascii = ((ascii - 97 + shift) % 26) + 97;
+        }
+
+        decoded += String.fromCharCode(ascii);
+    }
     
-   return encoded;
+    return decoded;
     /* Only make changes above this comment */
 }
 
